@@ -12,3 +12,4 @@ How to use: Simply select an rectangle you want to split into the grid and enter
 
 
 
+[Turn a shape into a grid self contained, not using it as element of a larger grid](https://dl.dropboxusercontent.com/u/175025400/plugin_1.jpg)
