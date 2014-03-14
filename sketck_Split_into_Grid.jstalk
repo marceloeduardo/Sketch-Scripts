@@ -1,0 +1,40 @@
+//input
+var columns = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
+var rows = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
+var gutter = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
+
+
+// just for debugging
+
+function alert(msg, title) {
+  title = title || "Whoops";
+  var app = [NSApplication sharedApplication];
+  [app displayDialog:msg withTitle:title];
+}
+
+
+
+var layer = selection[0];
+var frame = [layer frame];
+
+
+
+//resize it first
+[frame setWidth:[[[frame width] - [gutter*columns]] /columns]];
+[frame setHeight:[[[frame height] - [gutter*rows]] /rows]];
+
+// generate copies and position them
+for(i = 0; i < rows; i++){
+	for(j = 0; j < columns; j++){
+		
+		var copy = [layer duplicate];
+		var frame2 = [copy frame]
+
+		[frame2 setX:[frame x] + [[[frame width]+gutter]]*j];
+		[frame2 setY:[frame y] + [[[frame height]+gutter]]*i];
+	
+
+	}
+}
+
+
