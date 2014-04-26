@@ -1,7 +1,7 @@
 //input
 var columns = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
-var rows = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
-var gutter = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
+var rows = [[doc askForUserInput:"Enter the number of Rows" initialValue:"3"] integerValue];
+var gutter = [[doc askForUserInput:"Enter size of the Gutter in Pixels" initialValue:"3"] integerValue];
 
 
 // just for debugging
