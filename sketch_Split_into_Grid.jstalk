@@ -1,11 +1,3 @@
-//input
-var columns = [[doc askForUserInput:"Enter the number of Columns" initialValue:"3"] integerValue];
-var rows = [[doc askForUserInput:"Enter the number of Rows" initialValue:"3"] integerValue];
-var gutter = [[doc askForUserInput:"Enter size of the Gutter in Pixels" initialValue:"3"] integerValue];
-
-
-// just for debugging
-
 function alert(msg, title) {
   title = title || "Whoops";
   var app = [NSApplication sharedApplication];
@@ -13,11 +5,29 @@ function alert(msg, title) {
 }
 
 
+var alert = [COSAlertWindow new]; 
+
+[alert setMessageText:"Create a grid based on the selected Layer"];
+[alert setInformativeText:"This is informative"];
+
+[alert addTextLabelWithValue:"Rows"];
+[alert addTextFieldWithValue:"5"];
+[alert addTextLabelWithValue:"Cols"];
+[alert addTextFieldWithValue:"2"];
+[alert addTextLabelWithValue:"Gutter"];
+[alert addTextFieldWithValue:"10"];
+
+[alert runModal];
+
+var rows = [[alert viewAtIndex:1] stringValue]
+var cols = [[alert viewAtIndex:3] stringValue]
+var gutter = [[alert viewAtIndex:5] stringValue]
+rows = parseInt(rows)
+columns = parseInt(cols)
+gutter = parseInt(gutter)
 
 var layer = selection[0];
 var frame = [layer frame];
-
-
 
 //resize it first
 [frame setWidth:[[[frame width] - [gutter*columns]] /columns]];
@@ -26,15 +36,14 @@ var frame = [layer frame];
 // generate copies and position them
 for(i = 0; i < rows; i++){
 	for(j = 0; j < columns; j++){
-		
-		var copy = [layer duplicate];
-		var frame2 = [copy frame]
+		//discard the first copy:
+	
+		var newGridItem = [layer duplicate];
+		var frame_2 = [newGridItem frame];
 
-		[frame2 setX:[frame x] + [[[frame width]+gutter]]*j];
-		[frame2 setY:[frame y] + [[[frame height]+gutter]]*i];
+		[frame_2 setX:[frame x] + [[[frame width]+gutter]]*j];
+		[frame_2 setY:[frame y] + [[[frame height]+gutter]]*i];
 	
 
 	}
 }
-
-
